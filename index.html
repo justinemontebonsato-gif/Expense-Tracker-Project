@@ -1,11 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sato Expense Calculator</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/Futuristic SATO Orbital Logo.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- Tracker App Section -->
+      <section class="tracker">
+        <h1>EXPENSE TRACKER</h1>
+
+        <!-- Balance Summary -->
+        <section class="tracker__balance-summary">
+          <h2>Balance Summary</h2>
+          <h3>Total Balance</h3>
+          <p><data value="0.00">&#8369;</data></p>
+          <hr />
+          <section class="tracker__total-income-expense">
+            <div class="tracker__total-income">
+              <h3>Total Income</h3>
+              <p><data value="0.00">&#8369;</data></p>
+            </div>
+            <div class="tracker__total-expenses">
+              <h3>Total Expense</h3>
+              <p><data value="0.00">&#8369;</data></p>
+            </div>
+          </section>
+        </section>
+        <!-- End of Balance Summary-->
+
+        <!-- Transaction Form -->
+        <form class="tracker__transaction-form">
+          <h2>Add New Transaction</h2>
+          <h3>Type</h3>
+          <select>
+            <option>Income</option>
+            <option>Expense</option>
+          </select>
+
+          <h3>Amount</h3>
+          <input type="number" />
+
+          <h3>Date</h3>
+          <input type="date" />
+
+          <h3>Category</h3>
+          <input type="text" />
+
+          <input role="button" type="submit" value="Add Transaction" />
+        </form>
+        <!-- End of Transaction Form-->
+      </section>
+
+      <!-- Transaction History Section -->
+      <section class="transaction-history">
+        <h1>Transaction History</h1>
+        <ul class="tracker__transaction-history-list"></ul>
+      </section>
+    </main>
+    <footer>
+      <p>@2025 Jutine M. Sato. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>

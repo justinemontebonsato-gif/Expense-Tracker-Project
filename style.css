@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #030303;
+  font-family: "Inter", arial, sans-serif;
+  color: white;
+  height: 100dvh;
+}
+
+main,
+section,
+footer {
+  border: 1px solid lightblue;
+}
+
+main,
+footer {
+  width: 70%;
+  margin: auto;
+}
+
+main {
+  height: 90%;
+  display: flex;
+  section {
+    background-color: #141414;
+  }
+}
+
+footer {
+  height: 10%;
+}
+
+.tracker {
+  width: 35%;
+}
+
+.transaction-history {
+  width: 65%;
+}
