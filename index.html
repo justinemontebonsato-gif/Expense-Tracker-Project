@@ -27,40 +27,66 @@
         <section class="tracker__balance-summary">
           <h2>Balance Summary</h2>
           <h3>Total Balance</h3>
-          <p><data value="0.00">&#8369;</data></p>
+          <p><data value="0.00" class="total-balance">&#8369;50000</data></p>
           <hr />
+
           <section class="tracker__total-income-expense">
             <div class="tracker__total-income">
               <h3>Total Income</h3>
-              <p><data value="0.00">&#8369;</data></p>
+              <p><data value="0.00" class="income">&#8369;5000</data></p>
             </div>
-            <div class="tracker__total-expenses">
+
+            <div class="tracker__total-expense">
               <h3>Total Expense</h3>
-              <p><data value="0.00">&#8369;</data></p>
+              <p><data value="0.00" class="expense">&#8369;5000</data></p>
             </div>
           </section>
         </section>
         <!-- End of Balance Summary-->
 
         <!-- Transaction Form -->
-        <form class="tracker__transaction-form">
+        <form class="tracker__transaction-form" id="transaction-form">
           <h2>Add New Transaction</h2>
-          <h3>Type</h3>
-          <select>
-            <option>Income</option>
-            <option>Expense</option>
-          </select>
+          <div>
+            <h3>Type</h3>
+            <select id="transaction-type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+          </div>
 
-          <h3>Amount</h3>
-          <input type="number" />
+          <div>
+            <h3>Amount</h3>
+            <input
+              type="number"
+              placeholder="&#8369;0.00"
+              id="transaction-amount"
+              min="0.01"
+              step="0.01"
+            />
+          </div>
 
-          <h3>Date</h3>
-          <input type="date" />
+          <div>
+            <h3>Date</h3>
+            <input type="date" placeholder="mm/dd/yyyy" id="transaction-date" />
+          </div>
 
-          <h3>Category</h3>
-          <input type="text" />
+          <div>
+            <h3>Category</h3>
+            <input
+              type="text"
+              placeholder="e.g. Salary, Groceries"
+              id="transaction-category"
+            />
+          </div>
 
-          <input role="button" type="submit" value="Add Transaction" />
+          <input
+            role="button"
+            type="submit"
+            value="Add Transaction"
+            class="tracker__add-transaction-btn"
+            id="add-transaction-btn"
+          />
         </form>
         <!-- End of Transaction Form-->
       </section>
@@ -68,7 +94,248 @@
       <!-- Transaction History Section -->
       <section class="transaction-history">
         <h1>Transaction History</h1>
-        <ul class="tracker__transaction-history-list"></ul>
+        <ul class="transaction-history__list">
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/expense_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__expense-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/income_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__income-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/expense_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__expense-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/income_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__income-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/expense_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__expense-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/income_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__income-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/expense_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__expense-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/income_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__income-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/expense_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__expense-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+          <li class="transaction-history__list-item">
+            <div class="transaction-history__list-item-div">
+              <image
+                src="images/income_icon.png"
+                class="transaction-history__income-expense-icon"
+                alt="expense icon"
+              ></image>
+              <div>
+                <p class="transaction-history__title">DILDO</p>
+                <p class="transaction-history__date">November 7</p>
+              </div>
+            </div>
+
+            <div class="transaction-history__list-item-div">
+              <data class="transaction-history__income-amount" value="0.00"
+                >&#8369;5000</data
+              >
+              <image
+                src="images/delete_icon.png"
+                alt="delete icon"
+                class="transaction-history__delete-item-btn"
+              ></image>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
     <footer>
