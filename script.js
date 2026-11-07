@@ -1,7 +1,7 @@
 const transactionForm = document.querySelector("#transaction-form");
-let totalBalance = 0;
-let totalIncome = 0;
-let totalExpense = 0;
+let totalBalance = 0.0;
+let totalIncome = 0.0;
+let totalExpense = 0.0;
 const totalBalanceEl = document.querySelector("#total-balance-el");
 const totalIncomeEl = document.querySelector("#total-income-el");
 const totalExpenseEl = document.querySelector("#total-expense-el");
@@ -29,7 +29,7 @@ function createTransactionItem(amount, transactionType, date, category) {
             alt="${altText}"
             >
             <div>
-            <p class="transaction-history__title">${category}</p>
+            <p class="transaction-history__title"></p>
             <p class="transaction-history__date">${date}</p>
             </div>
         </div>
@@ -37,13 +37,17 @@ function createTransactionItem(amount, transactionType, date, category) {
         <div class="transaction-history__list-item-div">
             <data class="${dataClass}" value="${amount}">${transactionSymbol}\u20B1${amount}</data
             >
-            <img
-            src="images/delete_icon.png"
-            data-note="${listType}"
-            class="transaction-history__delete-item-btn"
-            >
+            <button class="delete-item-btn" type="button" aria-label="delete transaction item">
+                <img
+                class="transaction-history__delete-item-btn"
+                alt = ""
+                src="images/delete_icon.png"
+                data-note="${listType}"
+                >
+            </button>
         </div>
     `;
+  li.querySelector(".transaction-history__title").textContent = category;
 
   return li;
 }
@@ -77,16 +81,16 @@ transactionForm.addEventListener("submit", function (addTransaction) {
   if (transactionType === "income") {
     totalBalance += transactionAmount;
     totalIncome += transactionAmount;
-    totalIncomeEl.value = totalIncome;
-    totalIncomeEl.textContent = `\u20B1${totalIncome}`;
+    totalIncomeEl.value = totalIncome.toFixed(2);
+    totalIncomeEl.textContent = `\u20B1${totalIncome.toFixed(2)}`;
   } else {
     totalBalance -= transactionAmount;
     totalExpense += transactionAmount;
-    totalExpenseEl.value = totalExpense;
-    totalExpenseEl.textContent = `\u20B1${totalExpense}`;
+    totalExpenseEl.value = totalExpense.toFixed(2);
+    totalExpenseEl.textContent = `\u20B1${totalExpense.toFixed(2)}`;
   }
-  totalBalanceEl.value = totalBalance;
-  totalBalanceEl.textContent = `\u20B1${totalBalance}`;
+  totalBalanceEl.value = totalBalance.toFixed(2);
+  totalBalanceEl.textContent = `\u20B1${totalBalance.toFixed(2)}`;
 
   const transactionItem = createTransactionItem(
     transactionAmount,
@@ -100,22 +104,22 @@ transactionForm.addEventListener("submit", function (addTransaction) {
 
 transactionHistoryList.addEventListener("click", (e) => {
   const target = e.target;
-  if (target.matches("img.transaction-history__delete-item-btn")) {
-    let isIncome = target.dataset.note == "income";
+  if (target.matches(".transaction-history__delete-item-btn")) {
+    const dataEl = Number(target.parentElement.previousElementSibling.value);
+    const isIncome = target.dataset.note === "income";
     if (isIncome) {
-      console.log(totalBalance);
-      totalBalance -= Number(target.previousElementSibling.value);
-      totalIncome -= Number(target.previousElementSibling.value);
-      totalIncomeEl.value = totalIncome;
-      totalIncomeEl.textContent = `\u20B1${totalIncome}`;
+      totalBalance -= dataEl;
+      totalIncome -= dataEl;
+      totalIncomeEl.value = totalIncome.toFixed(2);
+      totalIncomeEl.textContent = `\u20B1${totalIncome.toFixed(2)}`;
     } else {
-      totalBalance += Number(target.previousElementSibling.value);
-      totalExpense -= Number(target.previousElementSibling.value);
-      totalExpenseEl.value = totalExpense;
-      totalExpenseEl.textContent = `\u20B1${totalExpense}`;
+      totalBalance += dataEl;
+      totalExpense -= dataEl;
+      totalExpenseEl.value = totalExpense.toFixed(2);
+      totalExpenseEl.textContent = `\u20B1${totalExpense.toFixed(2)}`;
     }
-    totalBalanceEl.value = totalBalance;
-    totalBalanceEl.textContent = `\u20B1${totalBalance}`;
+    totalBalanceEl.value = totalBalance.toFixed(2);
+    totalBalanceEl.textContent = `\u20B1${totalBalance.toFixed(2)}`;
 
     target.closest("li").remove();
   }

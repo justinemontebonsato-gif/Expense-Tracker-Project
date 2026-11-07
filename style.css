@@ -163,7 +163,7 @@ input {
   margin: 0.8em;
 }
 
-.transaction-history__list-item .transaction-history__list-item-div {
+.transaction-history__list-item-div {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -198,8 +198,13 @@ input {
 }
 
 .transaction-history__delete-item-btn {
-  width: 0.8em;
+  width: 1em;
   margin-left: 1em;
+}
+
+.delete-item-btn {
+  background: none;
+  border: none;
 }
 
 .transaction-history__list-item {
