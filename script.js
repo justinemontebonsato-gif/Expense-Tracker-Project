@@ -8,7 +8,45 @@ const totalExpenseEl = document.querySelector("#total-expense-el");
 const transactionHistoryList = document.querySelector(
   ".transaction-history__list",
 );
-let deleteBtn = null;
+
+function createTransactionItem(amount, transactionType, date, category) {
+  const li = document.createElement("li");
+  li.className = "transaction-history__list-item";
+  const isIncome = transactionType === "income";
+  const icon = isIncome ? "images/income_icon.png" : "images/expense_icon.png";
+  const altText = isIncome ? "income icon" : "expense icon";
+  const dataClass = isIncome
+    ? "transaction-history__income-amount"
+    : "transaction-history__expense-amount";
+  const transactionSymbol = isIncome ? "+" : "-";
+  const listType = isIncome ? "income" : "expense";
+
+  li.innerHTML = `
+        <div class="transaction-history__list-item-div">
+            <img
+            src="${icon}"
+            class="transaction-history__income-expense-icon"
+            alt="${altText}"
+            >
+            <div>
+            <p class="transaction-history__title">${category}</p>
+            <p class="transaction-history__date">${date}</p>
+            </div>
+        </div>
+
+        <div class="transaction-history__list-item-div">
+            <data class="${dataClass}" value="${amount}">${transactionSymbol}\u20B1${amount}</data
+            >
+            <img
+            src="images/delete_icon.png"
+            data-note="${listType}"
+            class="transaction-history__delete-item-btn"
+            >
+        </div>
+    `;
+
+  return li;
+}
 
 transactionForm.addEventListener("submit", function (addTransaction) {
   addTransaction.preventDefault();
@@ -60,63 +98,25 @@ transactionForm.addEventListener("submit", function (addTransaction) {
   transactionHistoryList.prepend(transactionItem);
 });
 
-function createTransactionItem(amount, transactionType, date, category) {
-  const li = document.createElement("li");
-  li.className = "transaction-history__list-item";
-  const income = transactionType === "income";
-  const icon = income ? "images/income_icon.png" : "images/expense_icon.png";
-  const altText = income ? "income icon" : "expense icon";
-  const dataClass = income
-    ? "transaction-history__income-amount"
-    : "transaction-history__expense-amount";
-  const transactionSymbol = income ? "+" : "-";
+transactionHistoryList.addEventListener("click", (e) => {
+  const target = e.target;
+  if (target.matches("img.transaction-history__delete-item-btn")) {
+    let isIncome = target.dataset.note == "income";
+    if (isIncome) {
+      console.log(totalBalance);
+      totalBalance -= Number(target.previousElementSibling.value);
+      totalIncome -= Number(target.previousElementSibling.value);
+      totalIncomeEl.value = totalIncome;
+      totalIncomeEl.textContent = `\u20B1${totalIncome}`;
+    } else {
+      totalBalance += Number(target.previousElementSibling.value);
+      totalExpense -= Number(target.previousElementSibling.value);
+      totalExpenseEl.value = totalExpense;
+      totalExpenseEl.textContent = `\u20B1${totalExpense}`;
+    }
+    totalBalanceEl.value = totalBalance;
+    totalBalanceEl.textContent = `\u20B1${totalBalance}`;
 
-  li.innerHTML = `
-        <div class="transaction-history__list-item-div">
-            <img
-            src="${icon}"
-            class="transaction-history__income-expense-icon"
-            alt="${altText}"
-            >
-            <div>
-            <p class="transaction-history__title">${category}</p>
-            <p class="transaction-history__date">${date}</p>
-            </div>
-        </div>
-
-        <div class="transaction-history__list-item-div">
-            <data class="${dataClass}" value="${amount}">${transactionSymbol}\u20B1${amount}</data
-            >
-            <img
-            src="images/delete_icon.png"
-            alt="${altText}"
-            class="transaction-history__delete-item-btn"
-            >
-        </div>
-    `;
-
-  return li;
-}
-
-deleteBtn.addEventListener("click", (e) => {
-  alert("hello");
-  const deleteIncome = e.target.alt === "income icon";
-  if (deleteIncome) {
-    totalBalance -= Number(e.target.closest("data").value);
-    totalIncome -= Number(e.target.closest("data").value);
-    totalIncomeEl.textContent = `\u20B1${totalIncome}`;
-  } else {
-    totalBalance += Number(e.target.closest("data").value);
-    totalExpense -= Number(e.target.closest("data").value);
-    totalExpenseEl.textContent = `\u20B1${totalExpense}`;
+    target.closest("li").remove();
   }
-  totalBalanceEl.textContent = `\u20B1${totalBalance}`;
-  e.target.closest("li")?.remove();
 });
-
-/*
-
-document.querySelector(
-  ".transaction-history__delete-item-btn",
-);
-*/
