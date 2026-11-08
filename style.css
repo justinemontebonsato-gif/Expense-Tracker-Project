@@ -35,7 +35,6 @@ footer {
   padding: 2.5em 2em;
   font-style: italic;
   color: #818586;
-  font-size: rem;
 }
 
 .tracker,
@@ -59,16 +58,19 @@ h3 {
 
 h1 {
   font-size: 1.3rem;
+  /* clamp:  */
 }
 
 h2 {
   font-size: 1rem;
+  /* clamp:  */
   font-weight: 500;
   color: rgb(214, 211, 211);
 }
 
 h3 {
   font-size: 0.8rem;
+  /* clamp:  */
   color: #818586;
   margin-bottom: 0.3rem;
 }
@@ -84,10 +86,12 @@ hr {
 data {
   font-weight: 700;
   font-size: 1.2rem;
+  /* clamp:  */
 }
 
 data.total-balance {
   font-size: 2.4rem;
+  /* clamp:  */
 }
 data.income {
   color: #389355;
@@ -101,6 +105,7 @@ select,
 input {
   width: 100%;
   font-size: 0.8rem;
+  /* clamp:  */
   background-color: #1a1a1a;
   border: 1px solid #818586;
   padding: 1em;
@@ -139,6 +144,7 @@ input {
 .tracker__add-transaction-btn {
   grid-column: 1 / -1;
   font-size: 1rem;
+  /* clamp:  */
   padding: 1rem;
   width: 100%;
   border: none;
@@ -181,10 +187,12 @@ input {
 .transaction-history__title {
   font-weight: 600;
   font-size: 1rem;
+  /* clamp:  */
 }
 
 .transaction-history__date {
   font-size: 0.9rem;
+  /* clamp:  */
   color: #818586;
   font-weight: 600;
 }
@@ -209,4 +217,18 @@ input {
 
 .transaction-history__list-item {
   display: flex;
+}
+
+@media (max-width: 992px) {
+  main {
+    flex-direction: column;
+  }
+
+  .tracker {
+    width: 100%;
+  }
+
+  .transaction-history {
+    width: 100%;
+  }
 }
