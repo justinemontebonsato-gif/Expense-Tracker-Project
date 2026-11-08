@@ -28,10 +28,12 @@ footer {
 main {
   display: flex;
   justify-content: space-between;
+  gap: 1em;
 }
 
 footer {
   margin-top: 1em;
+  font-size: clamp(0.6rem, 0.333rem + 0.889vw, 1rem);
   padding: 2.5em 2em;
   font-style: italic;
   color: #818586;
@@ -42,14 +44,6 @@ footer {
   padding: 0.7rem 1.5rem;
 }
 
-.tracker {
-  width: 35%;
-}
-
-.transaction-history {
-  width: 62%;
-}
-
 h1,
 h2,
 h3 {
@@ -57,20 +51,17 @@ h3 {
 }
 
 h1 {
-  font-size: 1.3rem;
-  /* clamp:  */
+  font-size: clamp(0.9rem, 0.633rem + 0.889vw, 1.3rem);
 }
 
 h2 {
-  font-size: 1rem;
-  /* clamp:  */
+  font-size: clamp(0.6rem, 0.333rem + 0.889vw, 1rem);
   font-weight: 500;
   color: rgb(214, 211, 211);
 }
 
 h3 {
-  font-size: 0.8rem;
-  /* clamp:  */
+  font-size: clamp(0.4rem, 0.133rem + 0.889vw, 0.8rem);
   color: #818586;
   margin-bottom: 0.3rem;
 }
@@ -85,13 +76,11 @@ hr {
 
 data {
   font-weight: 700;
-  font-size: 1.2rem;
-  /* clamp:  */
+  font-size: clamp(0.8rem, 0.533rem + 0.889vw, 1.2rem);
 }
 
 data.total-balance {
-  font-size: 2.4rem;
-  /* clamp:  */
+  font-size: clamp(1.8rem, 1.4rem + 1.333vw, 2.4rem);
 }
 data.income {
   color: #389355;
@@ -104,8 +93,7 @@ data.expense {
 select,
 input {
   width: 100%;
-  font-size: 0.8rem;
-  /* clamp:  */
+  font-size: clamp(0.4rem, 0.133rem + 0.889vw, 0.8rem);
   background-color: #1a1a1a;
   border: 1px solid #818586;
   padding: 1em;
@@ -143,8 +131,7 @@ input {
 
 .tracker__add-transaction-btn {
   grid-column: 1 / -1;
-  font-size: 1rem;
-  /* clamp:  */
+  font-size: clamp(0.6rem, 0.333rem + 0.889vw, 1rem);
   padding: 1rem;
   width: 100%;
   border: none;
@@ -186,13 +173,11 @@ input {
 
 .transaction-history__title {
   font-weight: 600;
-  font-size: 1rem;
-  /* clamp:  */
+  font-size: clamp(0.6rem, 0.333rem + 0.889vw, 1rem);
 }
 
 .transaction-history__date {
-  font-size: 0.9rem;
-  /* clamp:  */
+  font-size: clamp(0.5rem, 0.233rem + 0.889vw, 0.9rem);
   color: #818586;
   font-weight: 600;
 }
@@ -219,6 +204,30 @@ input {
   display: flex;
 }
 
+@media (min-width: 993px) {
+  .tracker {
+    flex-basis: 0;
+    flex-grow: 5;
+  }
+
+  .transaction-history {
+    flex-basis: 0;
+    flex-grow: 5;
+  }
+}
+
+@media (min-width: 1350px) {
+  .tracker {
+    flex-basis: 0;
+    flex-grow: 3;
+  }
+
+  .transaction-history {
+    flex-basis: 0;
+    flex-grow: 7;
+  }
+}
+
 @media (max-width: 992px) {
   main {
     flex-direction: column;
@@ -229,6 +238,7 @@ input {
   }
 
   .transaction-history {
+    margin-top: 1em;
     width: 100%;
   }
 }
