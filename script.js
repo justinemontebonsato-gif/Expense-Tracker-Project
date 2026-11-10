@@ -1,3 +1,12 @@
+/* 
+  To modify:
+  
+  Refactor to a transactions array:
+    - Stop using the page as your memory. Keep your data in an array, and let one function redraw the page from it.
+    - The problem now: your data lives in two places, the total variables and the HTML. When you delete, you dig the
+      amount out of the page (previousElementSibling.value). That breaks easily.
+*/
+
 const transactionForm = document.querySelector("#transaction-form");
 let totalBalance = 0.0;
 let totalIncome = 0.0;
