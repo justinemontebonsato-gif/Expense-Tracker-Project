@@ -7,6 +7,62 @@
       amount out of the page (previousElementSibling.value). That breaks easily.
 */
 
+/*
+// 1. THE MEMORY: This array is the SINGLE source of truth for your data
+let transactions = [
+  { id: 1, text: 'Initial Deposit', amount: 50 } // Each transaction has a unique ID
+];
+
+// 2. THE RENDER FUNCTION: Its only job is to redraw the page based on the array
+function render() {
+  const list = document.getElementById('transaction-list');
+  const totalDisplay = document.getElementById('total-display');
+  
+  // Clear the existing list entirely so we don't get duplicates
+  list.innerHTML = ''; 
+  
+  let total = 0;
+
+  // Loop through the array and build the HTML for each item
+  transactions.forEach(item => {
+    total += item.amount;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+      ${item.text}: $${item.amount} 
+      <!-- We pass the unique ID directly to the delete function -->
+      <button onclick="deleteTransaction(${item.id})">x</button>
+    `;
+    list.appendChild(li);
+  });
+
+  // Update the total display
+  totalDisplay.innerText = `Total: $${total}`;
+}
+
+// 3. ADD ACTION: Update the array, then tell render() to update the screen
+function addTransaction(text, amount) {
+  const newTransaction = {
+    id: Date.now(), // Generates a unique timestamp ID
+    text: text,
+    amount: amount
+  };
+  
+  transactions.push(newTransaction); // Update data
+  render();                          // Update UI
+}
+
+// 4. DELETE ACTION: Find the item in the array by ID, remove it, then redraw
+function deleteTransaction(id) {
+  // Keep everything EXCEPT the item matching the clicked ID
+  transactions = transactions.filter(item => item.id !== id); // Update data
+  render();                                                   // Update UI
+}
+
+// Initial draw when the page loads
+render();
+*/
+
 const transactionForm = document.querySelector("#transaction-form");
 let totalBalance = 0.0;
 let totalIncome = 0.0;
